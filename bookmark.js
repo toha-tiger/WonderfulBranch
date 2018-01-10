@@ -3,7 +3,9 @@ javascript:(function () {
   if (window.getSelection && window.getSelection().toString()) {
     s = window.getSelection().toString();
   } else if ($('#taskTitle h2').length) {
-    s = $('#taskTitle h2').text().replace(/\d+\sday(s)?/, '');
+    var a = $('#taskTitle h2').clone();
+    a.find('small').remove();
+    s = a.text();
   } else if ($('a#key-val.issue-link').length && $('#summary-val').length) {
     s = '' + $('a#key-val.issue-link').text() + ' ' + $('#summary-val').text();
   }
